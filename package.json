@@ -1,0 +1,33 @@
+{
+  "name": "@videopuppet/build-video-github-action",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/action.js",
+  "scripts": {
+    "test": "eslint src",
+    "dist": "webpack --progress"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/videopuppet/build-video-github-action.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/videopuppet/build-video-github-action/issues"
+  },
+  "homepage": "https://github.com/videopuppet/build-video-github-action#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.2",
+    "minimal-request-promise": "^1.5.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  },
+  "config": {
+    "buildenv": "production"
+  }
+}

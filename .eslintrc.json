@@ -1,0 +1,25 @@
+{
+  "extends": "eslint:recommended",
+  "env": {
+    "es6": true,
+	"node": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2017
+  },
+  "rules": {
+    "semi": ["error", "always"],
+    "strict": ["error", "global"],
+    "no-unused-vars": "error",
+    "indent": ["error", "tab", {"SwitchCase": 1} ],
+    "no-const-assign": "error",
+    "one-var": "error",
+    "prefer-const": "error",
+    "no-var": "error",
+    "prefer-arrow-callback": "error",
+    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
+    "quotes": ["error", "single", {"avoidEscape": true, "allowTemplateLiterals": true}],
+    "no-underscore-dangle": "off",
+    "no-shadow": ["error", { "builtinGlobals": true }]
+  }
+}

@@ -1,0 +1,18 @@
+name: 'Build with Video Puppet'
+description: 'Build videos'
+inputs:
+  github-token:
+    description: 'Github Authentication Token'
+    required: true
+  videopuppet-api-key:
+    description: 'Video Puppet API Key'
+    required: true
+  source-path:
+    description: 'Relative path to the main video source file (.yaml or .json)'
+    required: true
+outputs:
+  job-id:
+    description: 'Video Puppet Job ID'
+runs:
+  using: 'node12'
+  main: 'index.js'
