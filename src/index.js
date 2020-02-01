@@ -66,13 +66,13 @@ const core = require('@actions/core'),
 			writer.on('error', reject);
 		});
 	},
-	saveResults = function (task, taskResponse) {
+	saveResults = async function (task, taskResponse) {
 		const videoUrl = taskResponse.result,
 			remoteName = path.basename(url.parse(videoUrl).pathname),
 			filename = core.getInput('result-file') || remoteName;
-		core.setOutput('videoUrl', taskResponse.result);
-		core.setOutput('videoFile', filename);
-		downloadToFile(taskResponse.result, filename);
+		core.setOutput('video-url', taskResponse.result);
+		core.setOutput('video-file', filename);
+		await downloadToFile(taskResponse.result, filename);
 	},
 	run = async function () {
 		const apiUrl = core.getInput('api-url'),
@@ -91,7 +91,6 @@ const core = require('@actions/core'),
 		} else {
 			core.setFailed(JSON.stringify(taskResponse));
 		}
-
 	};
 run().catch(e => {
 	console.error(e);

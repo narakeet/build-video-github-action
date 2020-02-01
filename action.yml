@@ -14,9 +14,9 @@ inputs:
     description: 'Local file system path for the result file'
     required: false
 outputs:
-  videoUrl:
+  video-url:
     description: 'Temporary video URL - valid for 10 minutes'
-  videoFile:
+  video-file:
     description: 'Resulting video file, ready for uploading to artifacts or further processing'
 runs:
   using: 'node12'
