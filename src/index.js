@@ -5,7 +5,7 @@ const core = require('@actions/core'),
 	path = require('path'),
 	url = require('url'),
 	apiRequest = require('minimal-request-promise'),
-	POLLING_INTERVAL = 10000,
+	POLLING_INTERVAL = 5000,
 	safeParse = (content) => {
 		try {
 			return JSON.parse(content);
@@ -14,7 +14,6 @@ const core = require('@actions/core'),
 		}
 	},
 	startTask = async function (apiUrl, event) {
-		console.log('submitting', event);
 		try {
 			const response = await apiRequest.post(apiUrl, {
 					headers: {
@@ -54,6 +53,7 @@ const core = require('@actions/core'),
 		}
 	},
 	downloadToFile = async function (fileUrl, filePath) {
+		console.log('downloading from', fileUrl, 'to', filePath);
 		const writer = fs.createWriteStream(filePath),
 			response = await axios({
 				method: 'get',
@@ -87,7 +87,7 @@ const core = require('@actions/core'),
 			taskResponse = await pollForFinished(task.statusUrl, POLLING_INTERVAL);
 
 		if (taskResponse.succeeded) {
-			await saveResults(taskResponse);
+			await saveResults(task, taskResponse);
 		} else {
 			core.setFailed(JSON.stringify(taskResponse));
 		}
