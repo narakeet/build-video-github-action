@@ -1,6 +1,7 @@
 'use strict';
 const core = require('@actions/core'),
 	apiRequest = require('minimal-request-promise'),
+	POLLING_INTERVAL = 5000,
 	safeParse = (content) => {
 		try {
 			return JSON.parse(content);
@@ -59,7 +60,7 @@ const core = require('@actions/core'),
 				sha: process.env['GITHUB_SHA']
 			},
 			task = await startTask(apiUrl, event),
-			taskResponse = await pollForFinished(task.statusUrl);
+			taskResponse = await pollForFinished(task.statusUrl, POLLING_INTERVAL);
 
 		if (!taskResponse.succeeded) {
 			throw new Error(taskResponse.message || 'task failed');
