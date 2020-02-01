@@ -13,11 +13,12 @@ const core = require('@actions/core'),
 			return false;
 		}
 	},
-	startTask = async function (apiUrl, event) {
+	startTask = async function (apiUrl, apiKey, event) {
 		try {
 			const response = await apiRequest.post(apiUrl, {
 					headers: {
-						'Content-Type': 'application/json'
+						'Content-Type': 'application/json',
+						'x-api-key': apiKey
 					},
 					body: JSON.stringify(event)
 				}),
@@ -76,6 +77,7 @@ const core = require('@actions/core'),
 	},
 	run = async function () {
 		const apiUrl = core.getInput('api-url'),
+			apiKey = core.getInput('videopuppet-api-key'),
 			event = {
 				source: core.getInput('source-path'),
 				repository: process.env['GITHUB_REPOSITORY'],
@@ -83,7 +85,7 @@ const core = require('@actions/core'),
 				repositoryType: 'github',
 				sha: process.env['GITHUB_SHA']
 			},
-			task = await startTask(apiUrl, event),
+			task = await startTask(apiUrl, apiKey, event),
 			taskResponse = await pollForFinished(task.statusUrl, POLLING_INTERVAL);
 
 		if (taskResponse.succeeded) {
