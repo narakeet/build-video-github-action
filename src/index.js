@@ -11,7 +11,7 @@ const core = require('@actions/core'),
 					repositoryType: 'github',
 					sha: process.env['GITHUB_SHA']
 				}),
-				response = apiRequest.post( apiUrl, {
+				response = await apiRequest.post(apiUrl, {
 					headers: {
 						'Content-Type': 'application/json'
 					},
