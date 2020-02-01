@@ -1,7 +1,11 @@
 'use strict';
 const core = require('@actions/core'),
+	axios = require('axios'),
+	fs = require('fs'),
+	path = require('path'),
+	url = require('url'),
 	apiRequest = require('minimal-request-promise'),
-	POLLING_INTERVAL = 5000,
+	POLLING_INTERVAL = 10000,
 	safeParse = (content) => {
 		try {
 			return JSON.parse(content);
@@ -35,20 +39,40 @@ const core = require('@actions/core'),
 	},
 	pollForFinished = async function (statusUrl, interval) {
 		try {
+			await pause(interval);
 			const response = await apiRequest.get(statusUrl),
 				result = safeParse(response.body);
 			console.log(result);
 			if (result && result.finished) {
 				return result;
 			} else {
-				await pause(interval);
 				return pollForFinished(statusUrl, interval);
 			}
 		} catch (e) {
 			console.error('network request failed', e);
-			await pause(interval);
 			return pollForFinished(statusUrl, interval);
 		}
+	},
+	downloadToFile = async function (fileUrl, filePath) {
+		const writer = fs.createWriteStream(filePath),
+			response = await axios({
+				method: 'get',
+				url: fileUrl,
+				responseType: 'stream'
+			});
+		response.data.pipe(writer);
+		return new Promise((resolve, reject) => {
+			writer.on('finish', resolve);
+			writer.on('error', reject);
+		});
+	},
+	saveResults = function (task, taskResponse) {
+		const videoUrl = taskResponse.result,
+			remoteName = path.basename(url.parse(videoUrl).pathname),
+			filename = core.getInput('result-file') || remoteName;
+		core.setOutput('videoUrl', taskResponse.result);
+		core.setOutput('videoFile', filename);
+		downloadToFile(taskResponse.result, filename);
 	},
 	run = async function () {
 		const apiUrl = core.getInput('api-url'),
@@ -62,11 +86,12 @@ const core = require('@actions/core'),
 			task = await startTask(apiUrl, event),
 			taskResponse = await pollForFinished(task.statusUrl, POLLING_INTERVAL);
 
-		if (!taskResponse.succeeded) {
-			throw new Error(taskResponse.message || 'task failed');
+		if (taskResponse.succeeded) {
+			await saveResults(taskResponse);
+		} else {
+			core.setFailed(JSON.stringify(taskResponse));
 		}
-		core.setOutput('taskId', task.taskId);
-		core.setOutput('videoUrl', taskResponse.result);
+
 	};
 run().catch(e => {
 	console.error(e);

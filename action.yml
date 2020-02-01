@@ -10,11 +10,14 @@ inputs:
   api-url:
     description: 'Optional override for the API URl'
     required: false  
+  result-file:
+    description: 'Local file system path for the result file'
+    required: false
 outputs:
-  taskId:
-    description: 'VideoPuppet Task ID'
   videoUrl:
     description: 'Temporary video URL - valid for 10 minutes'
+  videoFile:
+    description: 'Resulting video file, ready for uploading to artifacts or further processing'
 runs:
   using: 'node12'
   main: 'dist/action.js'
