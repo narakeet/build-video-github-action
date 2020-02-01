@@ -1,14 +1,26 @@
 'use strict';
 const core = require('@actions/core'),
-	fs = require('fs');
-
-try {
-	const githubToken = core.getInput('github-token'),
-		sourcePath = core.getInput('source-path');
-	console.log('sourcePath', sourcePath);
-	console.log('repository', process.env['GITHUB_SHA']);
-	console.log('event', fs.readFileSync(process.env['GITHUB_EVENT_PATH'], 'utf8'));
-	console.log('githubToken', githubToken.length);
-} catch (error) {
-	core.setFailed(error.message);
-}
+	apiRequest = require('minimal-request-promise'),
+	run = async function () {
+		try {
+			const apiUrl = core.getInput('api-url'),
+				event = JSON.stringify({
+					source: core.getInput('source-path'),
+					repository: process.env['GITHUB_REPOSITORY'],
+					token: core.getInput('github-token'),
+					repositoryType: 'github',
+					sha: process.env['GITHUB_SHA']
+				}),
+				response = apiRequest.post( apiUrl, {
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify(event)
+				});
+			console.log('got result', response.body);
+		} catch (error) {
+			console.error(error);
+			core.setFailed(error.message || error);
+		}
+	};
+run();

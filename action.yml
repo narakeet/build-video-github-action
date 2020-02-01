@@ -7,6 +7,9 @@ inputs:
   source-path:
     description: 'Relative path to the main video source file (.yaml or .json)'
     required: true
+  api-url:
+    description: 'Optional override for the API URl'
+    required: false  
 runs:
   using: 'node12'
   main: 'dist/action.js'
