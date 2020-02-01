@@ -3,13 +3,13 @@ const core = require('@actions/core'),
 	apiRequest = require('minimal-request-promise'),
 	run = async function () {
 		const apiUrl = core.getInput('api-url'),
-			event = JSON.stringify({
+			event = {
 				source: core.getInput('source-path'),
 				repository: process.env['GITHUB_REPOSITORY'],
 				token: core.getInput('github-token'),
 				repositoryType: 'github',
 				sha: process.env['GITHUB_SHA']
-			}),
+			},
 			response = await apiRequest.post(apiUrl, {
 				headers: {
 					'Content-Type': 'application/json'
@@ -21,5 +21,5 @@ const core = require('@actions/core'),
 run()
 	.catch(e => {
 		console.error(e);
-		core.setFailed(e.message || e);
+		core.setFailed(e.body || e.message || String(e));
 	});
