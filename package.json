@@ -1,6 +1,6 @@
 {
   "name": "@videopuppet/build-video-github-action",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "GitHub Action to build videos from files in GitHub repositories using Video Puppet",
   "main": "dist/action.js",
   "files": ["dist"],

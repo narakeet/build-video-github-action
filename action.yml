@@ -1,20 +1,20 @@
-name: 'Build videos using Video Puppet'
-description: 'Build videos using Video Puppet'
+name: 'Video Puppet'
+description: 'Build videos directly from GitHub repositories using Video Puppet'
 inputs:
   github-token:
     description: 'GitHub action Authentication Token'
     required: true
   videopuppet-api-key:
-    description: 'VideoPuppet API Key'
+    description: 'Video Puppet API Key'
     required: true
   source-path:
     description: 'Relative path to the main video source file (.yaml or .json)'
     required: true
   api-url:
-    description: 'Optional override for the API URl'
+    description: '(optional) override for the API URl'
     required: false  
   result-file:
-    description: 'Local file system path for the result file'
+    description: '(optional) Local file system path for the result file'
     required: false
 outputs:
   video-url:
