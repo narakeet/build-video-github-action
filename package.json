@@ -1,19 +1,24 @@
 {
   "name": "@videopuppet/build-video-github-action",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "GitHub Action to build videos from files in GitHub repositories using Video Puppet",
   "main": "dist/action.js",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "pretest": "eslint src",
-	"test": "node test/integration-test.js",
+    "test": "node test/integration-test.js",
     "dist": "webpack --progress"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/videopuppet/build-video-github-action.git"
   },
-  "keywords": ["videopuppet", "video"],
+  "keywords": [
+    "videopuppet",
+    "video"
+  ],
   "author": "Gojko Adzic <gojko@gojko.com> (https://gojko.net/)",
   "license": "MIT",
   "bugs": {
