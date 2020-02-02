@@ -59,4 +59,4 @@ jobs:
 
 ## For developers and contributors
 
-See <CONTRIBUTING.md>.
+See [CONTRIBUTING.md](CONTRIBUTING.md).

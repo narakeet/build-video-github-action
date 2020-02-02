@@ -26,7 +26,7 @@ To build from a specific SHA hash, instead of the repository head, add
 
 ```
 SHA=
-``
+```
 
 Optionally, to use the Dev api instead of the production one, also add:
 
