@@ -10,6 +10,12 @@ version for distribution, use `npm run dist`;
 GitHub Actions require a published version (a git tag); don't forget to create a new
 tag an push it to GitHub after building the distribution version.
 
+## Keys and tokens
+
+You will need both a Github Access token and a Video Puppet API key to run this action. 
+You can generate a GitHub Access token from your [profile settings](https://github.com/settings/tokens). To obtain
+a Video Puppet API key, write to <contact@videopuppet.com>.
+
 ## Testing
 
 Create a `.env` file in the project root (it is ignored by git), containing
