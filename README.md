@@ -1,3 +1,5 @@
+![](https://www.videopuppet.com/assets/logo.png)
+
 # Video Puppet GitHub Action 
 
 GitHub Action to build videos from files in GitHub repositories using [Video Puppet](https://www.videopuppet.com).
@@ -38,6 +40,8 @@ Temporary secure (signed) video URL - valid for 10 minutes - which can be used t
 
 ## Example usage
 
+The following workflow will generate a video using this action, then upload it to the [workflow artifacts](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/persisting-workflow-data-using-artifacts).
+
 ```
 name: Make videos
 on: [push]
@@ -56,6 +60,10 @@ jobs:
         name: video
         path: "${{ steps.video.outputs.video-file }}"
 ```
+
+You will be able to access the generated video from the `Artifacts` menu in your GitHub Workflow
+
+![](images/artifact.png)
 
 ## For developers and contributors
 
