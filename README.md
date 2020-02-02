@@ -1,5 +1,3 @@
-![](https://www.videopuppet.com/assets/logo.png)
-
 # Video Puppet GitHub Action 
 
 GitHub Action to build videos from files in GitHub repositories using [Video Puppet](https://www.videopuppet.com). 
