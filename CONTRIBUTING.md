@@ -3,7 +3,17 @@
 ## Building the distribution
 
 This action compiles all dependencies to a single file using `webpack`. To build the 
-version for distribution, use `npm run dist`;
+version for distribution, use:
+
+```
+npm run dist
+```
+
+The resulting file (`dist/action.js`) will be minified. To generate a readable file, use
+
+```
+npm run dist --@videopuppet/build-video-github-action:buildenv=development
+```
 
 ## Releasing a new version
 
