@@ -24,3 +24,7 @@ outputs:
 runs:
   using: 'node12'
   main: 'dist/action.js'
+branding:
+  icon: 'video'  
+  color: 'blue'
+
