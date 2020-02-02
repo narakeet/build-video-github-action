@@ -4,7 +4,7 @@
 
 GitHub Action to build videos from files in GitHub repositories using [Video Puppet](https://www.videopuppet.com). 
 
-Video Puppet allows you to compose videos from source files and assets, and edit videos as easy as editing plain text. It makes it easy to version control videos, include video building into continuous integration and generate video with multiple formats and languages from the same assets.
+Video Puppet allows you to compose videos from source files and assets, and edit videos as easily as editing plain text. It makes it easy to version control videos, include video building into continuous integration and generate video with multiple formats and languages from the same assets.
 
 This action makes it easy to integrate Video Puppet into GitHub continuous integration pipelines. For example, commit a new version of the app, take screenshots with Puppeteer, then update instructional videos automatically to reflect the latest version of the application.
 
