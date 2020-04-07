@@ -22,7 +22,7 @@ Check out some nice [examples](https://github.com/videopuppet/examples).
 
 ### `source-path`
 
-**Required** Relative path to the main video source file (.yaml or .json); for example `hello-world/script/source.yml`. Do not include the starting slash.
+**Required** Relative path to the main video script file (.md for markdown, .yaml for YAML and .json for JSON scripts); for example `hello-world/script/source.md`. Do not include the starting slash.
 
 ### `result-file`
 
