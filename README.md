@@ -56,7 +56,7 @@ jobs:
     - uses: videopuppet/build-video-github-action@v1.0.0
       id: video
       with:
-        source-path: hello-world/script/source.yml
+        source-path: hello-world/script/script.md
         github-token: ${{ secrets.GITHUB_TOKEN }}
         videopuppet-api-key: ${{ secrets.VIDEOPUPPET_API_KEY }}
     - uses: actions/upload-artifact@v1
