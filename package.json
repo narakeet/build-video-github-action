@@ -1,7 +1,7 @@
 {
-  "name": "@videopuppet/build-video-github-action",
+  "name": "@narakeet/build-video-github-action",
   "version": "1.0.0",
-  "description": "GitHub Action to build videos from files in GitHub repositories using Video Puppet",
+  "description": "GitHub Action to build videos from files in GitHub repositories using Narakeet",
   "main": "dist/action.js",
   "files": [
     "dist"
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/videopuppet/build-video-github-action.git"
+    "url": "git+https://github.com/narakeet/build-video-github-action.git"
   },
   "keywords": [
     "videopuppet",
@@ -22,9 +22,9 @@
   "author": "Gojko Adzic <gojko@gojko.com> (https://gojko.net/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/videopuppet/build-video-github-action/issues"
+    "url": "https://github.com/narakeet/build-video-github-action/issues"
   },
-  "homepage": "https://github.com/videopuppet/build-video-github-action#readme",
+  "homepage": "https://github.com/narakeet/build-video-github-action#readme",
   "dependencies": {
     "@actions/core": "^1.2.2"
   },
