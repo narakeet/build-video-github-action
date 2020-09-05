@@ -22,7 +22,7 @@ Check out some nice [examples](https://github.com/narakeet/examples).
 
 ### `source-path`
 
-**Required** Relative path to the main video source file (.yaml or .json); for example `hello-world/script/source.yml`. Do not include the starting slash.
+**Required** Relative path to the main video script file (.md for markdown, .yaml for YAML and .json for JSON scripts); for example `hello-world/script/source.md`. Do not include the starting slash.
 
 ### `result-file`
 
@@ -56,7 +56,7 @@ jobs:
     - uses: narakeet/build-video-github-action@v1.0.0
       id: video
       with:
-        source-path: hello-world/script/source.yml
+        source-path: hello-world/script/script.md
         github-token: ${{ secrets.GITHUB_TOKEN }}
         videopuppet-api-key: ${{ secrets.VIDEOPUPPET_API_KEY }}
     - uses: actions/upload-artifact@v1
