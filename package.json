@@ -1,6 +1,6 @@
 {
   "name": "@narakeet/build-video-github-action",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "GitHub Action to build videos from files in GitHub repositories using Narakeet",
   "main": "dist/action.js",
   "files": [
@@ -18,7 +18,7 @@
   "keywords": [
     "videopuppet",
     "video",
-	"narakeet"
+    "narakeet"
   ],
   "author": "Gojko Adzic <gojko@gojko.com> (https://gojko.net/)",
   "license": "MIT",

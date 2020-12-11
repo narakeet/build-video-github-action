@@ -53,7 +53,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: narakeet/build-video-github-action@v1.0.1
+    - uses: narakeet/build-video-github-action@v1.0.2
       id: video
       with:
         source-path: hello-world/script/script.md
