@@ -8,7 +8,7 @@ const core = require('@actions/core'),
 
 requestProcessor.run({
 	apiUrl: core.getInput('api-url'),
-	apiKey: core.getInput('videopuppet-api-key'),
+	apiKey: core.getInput('api-key'),
 	source: core.getInput('source-path'),
 	repository: process.env['GITHUB_REPOSITORY'],
 	token: core.getInput('github-token'),

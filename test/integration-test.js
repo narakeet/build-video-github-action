@@ -7,7 +7,7 @@ const axios = require('axios'),
 	requestProcessor = new RequestProcessor(restApi),
 	params = {
 		apiUrl: process.env['API_URL'],
-		apiKey: process.env['VIDEOPUPPET_API_KEY'],
+		apiKey: process.env['API_KEY'],
 		source: process.env['SOURCE_PATH'],
 		repository: process.env['GITHUB_REPOSITORY'],
 		token: process.env['GITHUB_TOKEN'],

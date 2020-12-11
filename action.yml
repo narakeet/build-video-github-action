@@ -1,11 +1,11 @@
-name: 'Video Puppet'
-description: 'Build videos directly from GitHub repositories using Video Puppet'
+name: 'Narakeet'
+description: 'Build videos directly from GitHub repositories using Narakeet'
 inputs:
   github-token:
     description: 'GitHub action Authentication Token'
     required: true
-  videopuppet-api-key:
-    description: 'Video Puppet API Key'
+  api-key:
+    description: 'Narakeet API Key'
     required: true
   source-path:
     description: 'Relative path to the main video source file (.yaml or .json)'

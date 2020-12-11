@@ -14,7 +14,7 @@ Check out some nice [examples](https://github.com/narakeet/examples).
 
 **Required** The GitHub action Authentication Token to access the repository. Use `${{ secrets.GITHUB_TOKEN }}` to automatically set it to the token generated for the action
 
-### `videopuppet-api-key`
+### `api-key`
    
 **Required** Narakeet API Key for your account. To obtain a key, write to <contact@narakeet.com>. 
 
@@ -53,12 +53,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: narakeet/build-video-github-action@v1.0.0
+    - uses: narakeet/build-video-github-action@v1.0.1
       id: video
       with:
         source-path: hello-world/script/script.md
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        videopuppet-api-key: ${{ secrets.VIDEOPUPPET_API_KEY }}
+        api-key: ${{ secrets.API_KEY }}
     - uses: actions/upload-artifact@v1
       with:
         name: video
