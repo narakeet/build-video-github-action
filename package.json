@@ -1,6 +1,6 @@
 {
   "name": "@narakeet/build-video-github-action",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "GitHub Action to build videos from files in GitHub repositories using Narakeet",
   "main": "dist/action.js",
   "files": [
