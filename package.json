@@ -9,7 +9,7 @@
   "scripts": {
     "pretest": "eslint src",
     "test": "node test/integration-test.js",
-    "dist": "esbuild src/index.js --bundle --outfile=dist/action.js --platform=node --target=node18 --minify --keep-names --format=cjs"
+    "dist": "esbuild src/index.js --bundle --outfile=dist/action.js --platform=node --target=node18 --keep-names --format=cjs"
   },
   "repository": {
     "type": "git",

@@ -8,6 +8,7 @@ module.exports = function RequestProcessor (restApi) {
 	const self = this,
 		startTask = async function (apiUrl, apiKey, event) {
 			try {
+				console.log('posting to', apiUrl);
 				const result = await restApi.postJSON(
 					apiUrl,
 					event,
@@ -20,7 +21,7 @@ module.exports = function RequestProcessor (restApi) {
 				return result;
 			} catch (e) {
 				if (e.error) {
-					throw new Error(e.error);
+					throw e.error;
 				}
 				throw e;
 			}
