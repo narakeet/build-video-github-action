@@ -34,7 +34,7 @@ outputs:
   vtt-file:
     description: 'Resulting subtitle (.vtt) file, ready for uploading to artifacts or further processing. Only set if video produces external subtitles.'
 runs:
-  using: 'node18'
+  using: 'node20'
   main: 'dist/action.js'
 branding:
   icon: 'video'
