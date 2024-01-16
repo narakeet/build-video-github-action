@@ -15,9 +15,12 @@ requestProcessor.run({
 	sha: process.env['GITHUB_SHA'],
 	resultFile: core.getInput('result-file')
 }).then(result => {
-	core.setOutput('video-url', result.videoUrl);
-	core.setOutput('video-file', result.videoFile);
+	Object.keys(result).forEach((key) => core.setOutput(key, result[key]));
 }).catch(e => {
 	console.error(e);
-	core.setFailed(String(e));
+	if (typeof e === 'string') {
+		core.setFailed(e);
+	} else {
+		core.setFailed(JSON.stringify(e));
+	}
 });

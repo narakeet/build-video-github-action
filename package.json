@@ -1,6 +1,6 @@
 {
   "name": "@narakeet/build-video-github-action",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "GitHub Action to build videos from files in GitHub repositories using Narakeet",
   "main": "dist/action.js",
   "files": [
@@ -9,7 +9,7 @@
   "scripts": {
     "pretest": "eslint src",
     "test": "node test/integration-test.js",
-    "dist": "webpack --progress"
+    "dist": "esbuild src/index.js --bundle --outfile=dist/action.js --platform=node --target=node18 --minify --keep-names --format=cjs"
   },
   "repository": {
     "type": "git",
@@ -30,11 +30,10 @@
     "@actions/core": "^1.2.2"
   },
   "devDependencies": {
-    "axios": "^0.21.1",
+    "axios": "^1.6.5",
     "dotenv": "^8.2.0",
-    "eslint": "^6.8.0",
-    "webpack": "^4.41.5",
-    "webpack-cli": "^3.3.10"
+    "esbuild": "^0.19.11",
+    "eslint": "^6.8.0"
   },
   "config": {
     "buildenv": "production"

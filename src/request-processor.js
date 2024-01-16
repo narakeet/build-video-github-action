@@ -40,16 +40,25 @@ module.exports = function RequestProcessor (restApi) {
 				return pollForFinished(statusUrl, interval);
 			}
 		},
+		downloadResults = async function (remoteUrl, propertyPrefix, defaultFileName) {
+			if (!remoteUrl) {
+				return {};
+			}
+			const remoteName = path.basename(url.parse(remoteUrl).pathname),
+				filename = defaultFileName || remoteName,
+				result = {};
+			console.log('downloading from', remoteUrl, 'to', filename);
+			await restApi.downloadToFile(remoteUrl, filename);
+			result[propertyPrefix + '-url'] = remoteUrl;
+			result[propertyPrefix + '-file'] = filename;
+			return result;
+		},
 		saveResults = async function (task, taskResponse, resultFile) {
-			const videoUrl = taskResponse.result,
-				remoteName = path.basename(url.parse(videoUrl).pathname),
-				filename = resultFile || remoteName;
-			console.log('downloading from', taskResponse.result, 'to', filename);
-			await restApi.downloadToFile(taskResponse.result, filename);
-			return {
-				videoUrl: taskResponse.result,
-				videoFile: filename
-			};
+			const videoResults = await downloadResults(taskResponse?.result, 'video', resultFile),
+				srtResults = await downloadResults(taskResponse?.subtitles?.srt, 'srt'),
+				vttResults = await downloadResults(taskResponse?.subtitles?.vtt, 'vtt'),
+				posterResults = await downloadResults(taskResponse?.poster, 'poster');
+			return Object.assign(videoResults, srtResults, vttResults, posterResults);
 		};
 	self.run = async function (params) {
 		const {apiUrl, apiKey, source, repository, token, sha, resultFile} = params,

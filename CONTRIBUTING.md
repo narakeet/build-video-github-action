@@ -9,11 +9,8 @@ version for distribution, use:
 npm run dist
 ```
 
-The resulting file (`dist/action.js`) will be minified. To generate a readable file, use
+The resulting file (`dist/action.js`) will be minified. 
 
-```
-npm run dist --@narakeet/build-video-github-action:buildenv=development
-```
 
 ## Releasing a new version
 

@@ -19,5 +19,6 @@ console.log('params', params);
 requestProcessor.run(params).then(result => {
 	console.log(result);
 }).catch(e => {
-	console.error(e);
+	console.error(JSON.stringify(e));
+	throw e;
 });

@@ -12,7 +12,7 @@ inputs:
     required: true
   api-url:
     description: '(optional) override for the API URl'
-    required: false  
+    required: false
   result-file:
     description: '(optional) Local file system path for the result file'
     required: false
@@ -21,10 +21,22 @@ outputs:
     description: 'Temporary video URL - valid for 10 minutes'
   video-file:
     description: 'Resulting video file, ready for uploading to artifacts or further processing'
+  poster-url:
+    description: 'Temporary poster image URL - valid for 10 minutes'
+  poster-file:
+    description: 'Resulting poster image file, ready for uploading to artifacts or further processing'
+  srt-url:
+    description: 'Temporary subtitle (.srt) URL - valid for 10 minutes. Only set if video produces external subtitles.'
+  srt-file:
+    description: 'Resulting subtitle (.srt) file, ready for uploading to artifacts or further processing. Only set if video produces external subtitles.'
+  vtt-url:
+    description: 'Temporary subtitle (.vtt) URL - valid for 10 minutes. Only set if video produces external subtitles.'
+  vtt-file:
+    description: 'Resulting subtitle (.vtt) file, ready for uploading to artifacts or further processing. Only set if video produces external subtitles.'
 runs:
-  using: 'node12'
+  using: 'node18'
   main: 'dist/action.js'
 branding:
-  icon: 'video'  
+  icon: 'video'
   color: 'blue'
 
